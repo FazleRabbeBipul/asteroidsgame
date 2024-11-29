@@ -1,5 +1,6 @@
 import pygame
-from constants import *  
+from constants import *  # Import constants
+from player import Player  # Import Player class
 
 def main():
     pygame.init()
@@ -7,7 +8,10 @@ def main():
     
     # Initialize clock and dt
     clock = pygame.time.Clock()
-    dt = 0  # Delta time variable to track time between frames
+    dt = 0
+    
+    # Create player object
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS)
     
     running = True
     while running:
@@ -17,7 +21,10 @@ def main():
         # Process events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False  # End the game loop
+                running = False
+        
+        # Draw player on screen
+        player.draw(screen)
         
         # Refresh the screen
         pygame.display.flip()
@@ -29,3 +36,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
