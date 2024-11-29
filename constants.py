@@ -9,3 +9,8 @@ ASTEROID_MAX_RADIUS = ASTEROID_MIN_RADIUS * ASTEROID_KINDS
 PLAYER_RADIUS = 20
 PLAYER_TURN_SPEED = 300  # Turn speed in degrees per second
 PLAYER_SPEED = 200  # Pixels per second
+
+SHOT_RADIUS = 5
+PLAYER_SHOOT_SPEED = 500  # Speed of the shot
+
+PLAYER_SHOOT_COOLDOWN = 0.3  # Cooldown time between shots in seconds
