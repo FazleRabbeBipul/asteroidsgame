@@ -18,22 +18,21 @@ def main():
         # Fill the screen with black color
         screen.fill((0, 0, 0))
         
+        # Call the player's update method
+        dt = clock.tick(60) / 1000  # Delta time in seconds
+        player.update(dt)
+
+        # Draw player on screen
+        player.draw(screen)
+
+        # Refresh the screen
+        pygame.display.flip()
+
         # Process events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-        
-        # Draw player on screen
-        player.draw(screen)
-        
-        # Refresh the screen
-        pygame.display.flip()
-        
-        # Limit to 60 FPS and calculate delta time
-        dt = clock.tick(60) / 1000.0  # Convert milliseconds to seconds
-    
     pygame.quit()  # Clean up and close the pygame window
 
 if __name__ == "__main__":
     main()
-
