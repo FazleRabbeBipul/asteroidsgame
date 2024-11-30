@@ -27,11 +27,17 @@ class Player(CircleShape):
         self.position += forward * direction * PLAYER_SPEED * dt
 
     def shoot(self):
+        # Prevent shooting if the shot_timer is greater than 0 (cooldown in effect)
+        if self.shot_timer > 0:
+            return
+        
         # Create a new shot at the player's position
         shot = Shot(self.position.x, self.position.y)
-        
         # Set the shot's velocity based on the player's rotation
-        shot.velocity = pygame.Vector2(0, -1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+        shot.velocity = pygame.Vector2(0, -1).rotate(self.rotation + 180) * PLAYER_SHOOT_SPEED
+        
+        # Reset shot_timer after shooting
+        self.shot_timer = PLAYER_SHOOT_COOLDOWN
 
     def update(self, dt):
         keys = pygame.key.get_pressed()
